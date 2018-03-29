@@ -2,27 +2,56 @@ var clockRunning = false;
 
 var waitTime = 3000;
 
+// <iframe 
+// src="" 
+// width="480" height="299" frameBorder="0" 
+// class="giphy-embed" allowFullScreen>
+// </iframe>
+
+// <iframe 
+// src=""
+// width="480" height="299" frameBorder="0" 
+// class="giphy-embed" allowFullScreen>
+// </iframe>
+
+
 var q1 = {
 	question: "What color is an alligator?", 
 	answers:["green","red","blue","pink"],
-	correctAnswer: 0
+	correctAnswer: 0,
+	giphy: "https://giphy.com/embed/kzwzTIbi7sBm8" 
 }
 
 var q2 = {
-	question: "What year did the movie 'Bill and Ted' come out?",
-	answers:[1999,1989,1977,1988],
-	correctAnswer: 1
-
+	question: "What is the favorite food of the Teenage Mutant Ninja Turtles?",
+	answers:["anchovies","pizza","salami","cheese"],
+	correctAnswer: 1,
+	giphy: "https://giphy.com/embed/m54Uj4aKkoBpu"
 }
 
 var q3 = {
-	question: "What year did Donald Trump win?",
-	answers:[1999,1989,1977,1988],
-	correctAnswer: 3
-
+	question: "In the movie The Terminator, what is the name of the company that created Skynet?",
+	answers:["Cyberdyne Systems","google","kawasaki","brigterion"],
+	correctAnswer: 0,
+	giphy: "https://giphy.com/embed/l2JIireYxichTAGpq"
 }
 
-var questions = [q1,q2,q3];
+var q4 = {
+	question: "Emma Watson is known for playing which character in Harry Potter?",
+	answers: ["Hermione Granger", "Ginny Weasley", "Luna Lovegood", "Cho Chang"], 
+	correctAnswer: 0,
+	giphy: "https://giphy.com/embed/UXKy7mHAZ5Mqc"
+}
+
+var q5 = {
+	question: "Bruce Banner turns into what fictional superhero when he becomes angry?",
+	answers: ["Batman", "Superman", "The Hulk", "Iron Man", "Green Lantern"],
+	correctAnswer: 2,
+	giphy: "https://giphy.com/embed/YVUxgAGKyBjFe"
+}
+
+
+var questions = [q1,q2,q3,q4,q5];
 
 var gameState = {
 	currentQuestion: 0,
@@ -42,7 +71,7 @@ function formatAnswers(q) {
 
 function getQuestionHtml() {
 	var q = questions[gameState.currentQuestion]; 
-	var html = "<h1>" + q.question + "</h1>";
+	var html = "<h2>" + q.question + "</h2>";
 	html += "<p>" + formatAnswers(q);
 
 	return html;
@@ -85,7 +114,7 @@ function installChangeHandler() {
 }
 
 function showWins() {
-	$("#question").html("Game Over!<br>Wins:" + 
+	$("#question").html("Game Over!<br> <hr>Wins:" + 
 		gameState.wins + 
 		"<br>Losses:" + 
 		gameState.losses +
@@ -94,9 +123,11 @@ function showWins() {
 }
 
 function showCorrectAnswer(){
+	var q = questions[gameState.currentQuestion]; 
+	var giphy = q.giphy;
 	$("#question").html("");
 	$("#image").show();
-	$("#image").html('<iframe src="https://giphy.com/embed/qponxBxNCW772" width="390" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/attack-truck-alligator-qponxBxNCW772">via GIPHY</a></p>');
+	$("#image").html('<iframe src="' + giphy + '" width="390" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>');
 }
 //<iframe src="https://giphy.com/embed/qponxBxNCW772" width="390" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/attack-truck-alligator-qponxBxNCW772">via GIPHY</a></p>
 function startGame() {

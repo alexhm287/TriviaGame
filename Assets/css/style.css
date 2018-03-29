@@ -1,0 +1,34 @@
+h1 {
+	text-align:center;
+	font-family: 'Faster One', cursive;
+	font-size: 5pc;
+}
+
+#startbutton {
+	text-align:center;
+
+}
+
+#size-button {
+	font-size:4pc;
+}
+
+body {
+	background-color:orange;
+}
+
+#question {
+	font-size:3pc;
+	font-family: 'Abril Fatface', cursive;
+	text-align:center;
+}
+
+#timeremaining {
+	font-size:2pc;
+	font-weight:bold;
+	text-align:center;
+}
+
+.giphy {
+	text-align: center;
+}
